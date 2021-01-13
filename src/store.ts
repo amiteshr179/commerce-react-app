@@ -1,10 +1,12 @@
 import { combineReducers, createStore } from 'redux'
 import { devToolsEnhancer } from 'redux-devtools-extension'
-import { CounterReducer } from './features/counter'
+import ItemReducer from "./features/Items/ItemReducer";
+import CartReducer from "./features/Items/CartReducer";
 
 /* Create root reducer, containing all features of the application */
 const rootReducer = combineReducers({
-  count: CounterReducer,
+  product: ItemReducer,
+  cart: CartReducer
 })
 
 const store = createStore(
@@ -13,3 +15,5 @@ const store = createStore(
 )
 
 export default store
+
+export type RootState = ReturnType<typeof rootReducer>

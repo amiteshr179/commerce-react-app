@@ -2,8 +2,9 @@ import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import { Navbar } from './components/Navbar'
-import { About } from './pages/About'
 import { Home } from './pages/Home'
+import { Cart} from "./pages/Cart";
+import { ItemDetail } from "./pages/ItemDetail"
 
 const App: React.FC = () => {
   return (
@@ -12,7 +13,8 @@ const App: React.FC = () => {
       <div className="container">
         <Switch>
           <Route path="/" component={Home} exact />
-          <Route path="/about" component={About} />
+          <Route path="/cart" component={Cart} />
+          <Route path="/items/:id" component={ItemDetail}/>
         </Switch>
       </div>
     </BrowserRouter>

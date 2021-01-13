@@ -1,6 +1,13 @@
 import * as actionTypes from './actionTypes'
 import * as selectors from './selectors'
 
-export { default as CounterReducer } from './counterReducer'
 export { actionTypes }
 export { selectors }
+
+export {
+    setProducts,
+    fetchProductsFailed,
+    productDetails,
+} from "./itemActions";
+
+export { addToCart, buyNow, removeFromCart, cleanCart, FetchCart } from "./cartActions";
