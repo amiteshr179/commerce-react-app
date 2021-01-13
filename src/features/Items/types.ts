@@ -13,3 +13,7 @@ export interface SystemState {
     value: number
   }
 }
+
+export interface SystemListState {
+  data:[]
+}
