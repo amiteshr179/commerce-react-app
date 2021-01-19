@@ -1,9 +1,9 @@
 import React, {Fragment, useEffect, useReducer, useState} from 'react'
+import { Redirect } from 'react-router-dom';
 
 import { getList } from '../services/list';
 import  List from '../components/ListOfItems';
 // @ts-ignore
-import {ItemDetail} from "./ItemDetail";
 import * as actions from "../features/Items";
 import ItemReducer from "../features/Items/ItemReducer";
 // @ts-ignore
@@ -17,7 +17,7 @@ export const Home: React.FC = () => {
   const [item, dispatch]:[item: any, dispatch:any] = useReducer(ItemReducer,{product:{}});
     // eslint-disable-next-line no-use-before-define
     const [ItemClick, setItemClick]:[ItemClick: any, setItemClick:any] = useState(false);
-    const [cartProduct, dispatchCart]:[cartProduct:any, dispatchCart:any] = useReducer(CartReducer,{items:[]})
+    const [, dispatchCart]:[cartProduct:any, dispatchCart:any] = useReducer(CartReducer,{items:[]})
     const handleChange =(product:any)=>{
         setItemClick(true);
         dispatch(actions.productDetails(product));
@@ -38,10 +38,13 @@ export const Home: React.FC = () => {
     <Fragment>
         {!ItemClick ? (
             <List products={list} singleClick={handleChange} addToCartChange={addToCartChange}/>) : (
-            <ItemDetail item={item}/>
+            <Redirect to={{
+                pathname: `/items/${item.product.isbn}`,
+                state: { item }
+            }} />
         )
         }
-        {console.log(cartProduct)}
+        {console.log(item)}
      </Fragment>
   )
 }

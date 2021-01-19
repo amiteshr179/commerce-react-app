@@ -1,7 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-export const Navbar: React.FC = () => (
+export const Navbar: React.FC = () => {
+  return(
   <nav>
     <div className="nav-wrapper cyan darken-1 px1">
       <NavLink to="/" className="brand-logo">
@@ -12,9 +13,11 @@ export const Navbar: React.FC = () => (
           <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink to="/cart">Cart</NavLink>
+          <NavLink to={{
+            pathname: `/cart`
+          }}>Cart</NavLink>
         </li>
       </ul>
     </div>
   </nav>
-)
+)}

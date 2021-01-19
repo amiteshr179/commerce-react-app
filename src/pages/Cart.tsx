@@ -1,13 +1,12 @@
 import React, {Fragment} from 'react'
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import * as actions from "../features/Items";
-import {RootState} from "../store";
 
 
 
-export const Cart: React.FC = () => {
+export const Cart: React.FC = (props:any) => {
     const dispatch = useDispatch();
-    const cartItems = useSelector((state:RootState) => state.cart.items);
+    const cartItems = props;
     const removeItem = (item:any)=> {
         dispatch(actions.removeFromCart(item));
     }
